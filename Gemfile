@@ -20,26 +20,36 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn', '~> 4.8.3'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Authentication
+# gem 'devise', '~> 3.4.1'
+
+# # Model
+# gem 'paranoia', '~> 2.1.0'
+# gem 'auto_strip_attributes', '~> 2.0.6'
+
+# # Image
+# gem 'mini_magick', '~> 4.1.0'
+# gem 'refile', :git => 'https://github.com/refile/refile.git', require: ["refile/rails", "refile/image_processing"]
+# gem "aws-sdk", '< 2'
+
+# # View
+# gem 'bootstrap-sass', '~> 3.3.3'
+# gem 'font-awesome-rails', '~> 4.3.0.0'
+# gem 'bh', '~> 1.3.1'
+
+# # Form Builder
+# gem 'simple_form', '~> 3.1.0'
+# gem 'actionform', :git => 'https://github.com/rails/actionform.git', :require => 'action_form'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'annotate', '~> 2.6.5'
+  gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'did_you_mean', '~> 0.9.6'
+  gem 'foreman', '~> 0.77.0'
 end
 
