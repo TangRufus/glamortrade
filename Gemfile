@@ -24,8 +24,11 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 gem 'unicorn', '~> 4.8.3'
 
+# Static Pages
+gem 'high_voltage', '~> 2.2.1'
+
 # Authentication
-# gem 'devise', '~> 3.4.1'
+gem 'devise', '~> 3.4.1'
 
 # # Model
 # gem 'paranoia', '~> 2.1.0'
@@ -36,14 +39,14 @@ gem 'unicorn', '~> 4.8.3'
 # gem 'refile', :git => 'https://github.com/refile/refile.git', require: ["refile/rails", "refile/image_processing"]
 # gem "aws-sdk", '< 2'
 
-# # View
-# gem 'bootstrap-sass', '~> 3.3.3'
-# gem 'font-awesome-rails', '~> 4.3.0.0'
-# gem 'bh', '~> 1.3.1'
+# View
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'bh', '~> 1.3.1'
 
-# # Form Builder
-# gem 'simple_form', '~> 3.1.0'
-# gem 'actionform', :git => 'https://github.com/rails/actionform.git', :require => 'action_form'
+# Form Builder
+gem 'simple_form', '~> 3.1.0'
+gem 'actionform', :git => 'https://github.com/rails/actionform.git', :require => 'action_form'
 
 group :development, :test do
   gem 'annotate', '~> 2.6.5'

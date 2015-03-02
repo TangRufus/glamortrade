@@ -1,0 +1,27 @@
+ <% if ! flash.blank? %>
+ <!-- Messages -->
+ <section class="site-content site-section">
+   <div class="container inner">
+     <div class="row">
+       <div class="col-md-6 col-md-offset-3">
+        <% flash.each do |key, value| %>
+
+        <% case key %>
+        <% when "error", "alert" %>
+        <% context = "danger" %>
+        <% when "warning" %>
+        <% context = "warning" %>
+        <% when "success" %>
+        <% context = "success" %>
+        <% else %>
+        <% context = "info" %>
+        <% end %>
+
+        <%= alert_box value, context: context %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Messages -->
+<% end %>
