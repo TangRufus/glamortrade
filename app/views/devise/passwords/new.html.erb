@@ -1,12 +1,16 @@
-<div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
-    <h3>Forgot your password?</h3>
-    <p>We'll send password reset instructions.</p>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+<%= content_for :title, 'Forgot Password' %>
+
+<!-- Forgot Password Form -->
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { :method => :post, :role => 'form', class: "form-horizontal"}) do |f| %>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= f.input :email, autofocus: true, class: 'form-control', placeholder: "Enter your email.." %>
     </div>
-     <%= f.submit 'Reset Password', :class => 'button right' %>
-  <% end %>
-</div>
+  </div>
+  <div class="form-group form-actions">
+    <div class="col-xs-12 text-right">
+      <%= f.submit "Reset Password", class: "btn btn-effect-ripple btn-sm btn-primary" %>
+    </div>
+  </div>
+<% end %>
+<!-- END Forgot Password -->
