@@ -15,3 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require action_form
+//= require appui/plugins
+//= require appui/app

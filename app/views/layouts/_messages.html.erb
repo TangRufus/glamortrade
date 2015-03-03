@@ -1,27 +1,22 @@
- <% if ! flash.blank? %>
- <!-- Messages -->
- <section class="site-content site-section">
-   <div class="container inner">
-     <div class="row">
-       <div class="col-md-6 col-md-offset-3">
-        <% flash.each do |key, value| %>
+<% if ! flash.blank? %>
+  <%# Rails flash messages styled for Bootstrap 3.0 %>
+  <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+            <% case name %>
+          <% when "error", "alert" %>
+          <% context = "danger" %>
+          <% when "warning" %>
+          <% context = "warning" %>
+          <% when "success" %>
+          <% context = "success" %>
+          <% else %>
+          <% context = "info" %>
+          <% end %>
 
-        <% case key %>
-        <% when "error", "alert" %>
-        <% context = "danger" %>
-        <% when "warning" %>
-        <% context = "warning" %>
-        <% when "success" %>
-        <% context = "success" %>
-        <% else %>
-        <% context = "info" %>
-        <% end %>
-
-        <%= alert_box value, context: context %>
-        <% end %>
+      <div class="alert alert-<%= context %>">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End Messages -->
+    <% end %>
+  <% end %>
 <% end %>

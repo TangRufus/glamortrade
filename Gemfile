@@ -40,10 +40,11 @@ gem 'devise', '~> 3.4.1'
 # gem "aws-sdk", '< 2'
 
 # View
+gem 'modernizr-rails', '~> 2.7.1'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'font-awesome-rails', '~> 4.3.0.0'
 gem 'bh', '~> 1.3.1'
-
+gem 'rails_layout', '~> 1.0.24'
 # Form Builder
 gem 'simple_form', '~> 3.1.0'
 gem 'actionform', :git => 'https://github.com/rails/actionform.git', :require => 'action_form'

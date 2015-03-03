@@ -1,0 +1,28 @@
+<!-- Login Form -->
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form', class: "form-horizontal"}) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= f.input :email, autofocus: true, class: 'form-control', placeholder: "Your email..", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+     <%= f.input :password, class: 'form-control', placeholder: "Your password..", required: true %>
+   </div>
+  </div>
+  <div class="form-group form-actions">
+    <div class="col-xs-8">
+      <label class="csscheckbox csscheckbox-primary">
+        <%= f.check_box :remember_me %>
+        <span></span>
+      </label>
+      Remember Me?
+    </div>
+    <div class="col-xs-4 text-right">
+      <%= f.submit "Login", class: "btn btn-effect-ripple btn-sm btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+<!-- END Login Form -->
+
