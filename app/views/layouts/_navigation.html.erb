@@ -1,19 +1,40 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<!-- Header -->
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <!-- Left Header Navigation -->
+  <ul class="nav navbar-nav-custom">
+    <!-- Main Sidebar Toggle Button -->
+    <li>
+      <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');
+      this.blur();">
+      <i class="fa fa-ellipsis-v fa-fw animation-fadeInRight" id="sidebar-toggle-mini"></i>
+      <i class="fa fa-bars fa-fw animation-fadeInRight" id="sidebar-toggle-full"></i>
+    </a>
+  </li>
+  <!-- END Main Sidebar Toggle Button -->
+
+  <!-- Header Link -->
+</ul>
+<!-- END Left Header Navigation -->
+
+<!-- Right Header Navigation -->
+<ul class="nav navbar-nav-custom pull-right">
+  <% if user_signed_in? %>
+    <li class="hidden-xs animation-fadeInQuick">
+      <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+    </li>
+    <li class="hidden-xs animation-fadeInQuick">
+      <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+    </li>
+  <% else %>
+    <li class="hidden-xs animation-fadeInQuick">
+      <li><%= link_to 'Login', new_user_session_path %></li>
+    </li>
+    <li class="hidden-xs animation-fadeInQuick">
+      <li><%= link_to 'Sign up', new_user_registration_path %></li>
+    </li>
+  <% end %>
+</ul>
+<!-- END Right Header Navigation -->
+<!-- END Header Link -->
+</header>
+<!-- END Header -->

@@ -1,0 +1,22 @@
+<% if content_for?(:title) %>
+<!-- Page Header -->
+<div class="content-header">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="header-section">
+        <h1><%= yield(:title) %><h1>
+      </div>
+    </div>
+    <div class="col-sm-6 hidden-xs">
+      <div class="header-section">
+        <% if  content_for?(:breadcrumb) %>
+        <ul class="breadcrumb breadcrumb-top">
+          <%= yield(:breadcrumb) %>
+        </ul>%
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END Page Header -->
+<% end %>

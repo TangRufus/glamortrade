@@ -2,12 +2,6 @@
 
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, :role => 'form', class: "form-horizontal"}) do |f| %>
 
-  <% if f.full_error :confirmation_token %>
-    <div class="alert alert-danger">
-      <%= f.full_error :confirmation_token, class: "text-light-important" %>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <div class="col-xs-12">
       <%= f.input :email, required: true, autofocus: true, class: 'form-control', placeholder: "Enter your email.." %>

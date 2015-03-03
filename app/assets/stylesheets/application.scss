@@ -16,9 +16,6 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "appui";
-@import "color";
-
-.form-horizontal .form-group {
-  margin-left: inherit;
-  margin-right: inherit;
-}
+@import "nav-side-bar";
+@import "forms";
+@import "colors";

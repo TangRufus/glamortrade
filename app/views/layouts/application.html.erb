@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title><%= content_for?(:title) ? yield(:title) + " | Trading Agent" : "Trading Agent" %></title>
-  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Trading Agent" %>">
-
+  <title><%= content_for?(:title) ? yield(:title) + " | GlamorTrade" : "GlamorTrade" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "GlamorTrade" %>">
+  <meta name="author" content="GlamorTrade">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 
@@ -14,44 +14,41 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
   <!-- Modernizr (browser feature detection library) -->
-  <%= javascript_include_tag :modernizr %>
+  <%= javascript_include_tag 'modernizr' %>
+
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-  <!-- Login Container -->
-  <div id="login-container">
-    <!-- Login Header -->
-    <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
-      <i class="fa fa-cube"></i> <strong>Welcome</strong>
-    </h1>
-    <!-- END Login Header -->
 
-    <!-- Login Block -->
-    <div class="block animation-fadeInQuickInv">
-      <!-- Login Title -->
-      <div class="block-title">
-        <h2><%= yield(:title) %></h2>
+  <!-- Page Wrapper -->
+  <div id="page-wrapper">
+    <!-- Page Container -->
+    <div id="page-container" class="header-fixed-top sidebar-visible-lg-full">
+
+    <%= render "layouts/sidebar" %>
+
+      <!-- Main Container -->
+      <div id="main-container">
+        <%= render "layouts/navigation" %>
+
+      <!-- Page content -->
+      <div id="page-content">
+
+      <%= render "layouts/page_header" %>
+
+          <%= render "layouts/messages" %>
+
+          <%= yield %>
+
+        </div>
+        <!-- END Page Content -->
       </div>
-      <!-- END Login Title -->
-
-      <%= render "layouts/messages" %>
-
-      <%= yield %>
-
+      <!-- END Main Container -->
     </div>
-    <!-- END Login Block -->
-
-
-
-    <!-- Footer -->
-    <footer class="text-muted text-center animation-pullUp">
-     <br />
-      <small><span id="year-copy"></span> &copy; <%= link_to "Trading Agent", root_path %></small>
-    </footer>
-    <!-- END Footer -->
+    <!-- END Page Container -->
   </div>
-  <!-- END Login Container -->
+  <!-- END Page Wrapper -->
 
 </body>
 </html>
