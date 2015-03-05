@@ -20,6 +20,12 @@
 #  updated_at             :datetime
 #  approved               :boolean          default("false"), not null
 #
+# Indexes
+#
+#  index_admins_on_email                 (email) UNIQUE
+#  index_admins_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_admins_on_unlock_token          (unlock_token) UNIQUE
+#
 
 require 'test_helper'
 

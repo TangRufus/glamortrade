@@ -1,0 +1,45 @@
+<%= content_for :title, 'Company Infomation' %>
+
+<div class="col-md-8  col-md-offset-2">
+  <!-- Partial Responsive Block -->
+  <div class="block">
+    <!-- Partial Responsive Title -->
+    <div class="block-title">
+      <h2><%= @company.name %></h2>
+      <div class="block-options pull-right">
+        <%= link_to 'Edit', edit_company_path(@company), class: "btn btn-primary" %>
+      </div>
+    </div>
+    <!-- END Partial Responsive Title -->
+
+    <!-- Partial Responsive Content -->
+        <div class="table-responsive">
+    <table class="table table-striped table-borderless table-vcenter">
+      <tbody>
+        <tr>
+          <td><strong>Company Name</strong></td>
+          <td><%= @company.name %></td>
+        </tr>
+        <tr>
+          <td><strong>Domain URL</strong></td>
+          <td><%= link_to @company.domain_url, @company.domain_url %></td>
+        </tr>
+        <tr>
+          <td><strong>Low Stock Contact Email</strong></td>
+          <td><%= @company.low_stock_contact_email %></td>
+        </tr>
+        <tr>
+          <td><strong>Out Of Order Stock Contact Email</strong></td>
+          <td><%= @company.out_of_stock_contact_email %></td>
+        </tr>
+        <tr>
+          <td><strong>Delivery Contact Email</strong></td>
+          <td><%= @company.delivery_contact_email %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <!-- END Partial Responsive Content -->
+  </div>
+  <!-- END Partial Responsive Block -->
+</div>

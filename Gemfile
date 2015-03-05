@@ -32,7 +32,9 @@ gem 'devise', '~> 3.4.1'
 
 # # Model
 # gem 'paranoia', '~> 2.1.0'
-# gem 'auto_strip_attributes', '~> 2.0.6'
+gem 'auto_strip_attributes', '~> 2.0.6'
+gem 'validate_url', '~> 1.0.0'
+gem 'email_validator', '~> 1.5.0'
 
 # # Image
 # gem 'mini_magick', '~> 4.1.0'

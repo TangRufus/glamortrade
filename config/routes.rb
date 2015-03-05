@@ -1,6 +1,14 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                       Controller#Action
+#                 companies GET    /companies(.:format)              companies#index
+#                           POST   /companies(.:format)              companies#create
+#               new_company GET    /companies/new(.:format)          companies#new
+#              edit_company GET    /companies/:id/edit(.:format)     companies#edit
+#                   company GET    /companies/:id(.:format)          companies#show
+#                           PATCH  /companies/:id(.:format)          companies#update
+#                           PUT    /companies/:id(.:format)          companies#update
+#                           DELETE /companies/:id(.:format)          companies#destroy
 #         new_admin_session GET    /admins/sign_in(.:format)         devise/sessions#new
 #             admin_session POST   /admins/sign_in(.:format)         devise/sessions#create
 #     destroy_admin_session DELETE /admins/sign_out(.:format)        devise/sessions#destroy
@@ -46,6 +54,15 @@
 #
 
 Rails.application.routes.draw do
+
+  resources :companies
+
   devise_for :admins
   devise_for :users
+
+  # authenticate :admin do
+  #   namespace :admin do
+  #     resources :companies
+  #   end
+  # end
 end

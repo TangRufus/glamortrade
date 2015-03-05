@@ -1,0 +1,8 @@
+<tr>
+  <td><%= company.name %></td>
+  <td><%= link_to company.domain_url, company.domain_url %></td>
+  <td><%= company.low_stock_contact_email %></td>
+  <td><%= company.out_of_stock_contact_email %></td>
+  <td><%= company.delivery_contact_email %></td>
+  <td><%= link_to 'Edit', edit_company_path(company), class: "btn btn-primary" %></td>
+</tr>
