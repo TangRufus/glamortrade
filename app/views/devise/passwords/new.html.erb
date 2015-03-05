@@ -2,6 +2,13 @@
 
 <!-- Forgot Password Form -->
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { :method => :post, :role => 'form', class: "form-horizontal"}) do |f| %>
+
+  <% if f.full_error :not_approved %>
+    <div class="alert alert-danger">
+      <%= f.full_error :not_approved, class: "text-light-important" %>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <div class="col-xs-12">
       <%= f.input :email, autofocus: true, class: 'form-control', placeholder: "Your email.." %>
