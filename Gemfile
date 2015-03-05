@@ -29,6 +29,7 @@ gem 'high_voltage', '~> 2.2.1'
 
 # Authentication
 gem 'devise', '~> 3.4.1'
+gem 'pundit', '~> 0.3.0'
 
 # # Model
 # gem 'paranoia', '~> 2.1.0'

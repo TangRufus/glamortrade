@@ -34,6 +34,10 @@ class Admin < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable,
   :lockable, :timeoutable
 
+  def type
+    'admin'
+  end
+
   def active_for_authentication?
     super && approved?
   end
