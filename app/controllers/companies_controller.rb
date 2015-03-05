@@ -70,6 +70,7 @@ class CompaniesController < ApplicationController
 
     def create_new_form
       company = Company.new
+      authorize company
       @company_form = CompanyForm.new(company)
     end
 
@@ -79,6 +80,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :domain_url, :low_stock_contact_email, :out_of_stock_contact_email, :delivery_contact_email)
+ params.require(:company).permit(*policy(@company || Company).permitted_attributes)
     end
   end
