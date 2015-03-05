@@ -22,9 +22,11 @@
 #  locked_at              :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
+#  company_id             :integer
 #
 # Indexes
 #
+#  index_users_on_company_id            (company_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
@@ -37,4 +39,27 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
+
+  before_validation :set_company
+
+  validate :must_use_work_email
+  validates :company, presence: true
+
+  belongs_to :company
+
+  def set_company
+    return if self.company.presence
+
+    email_domain = email.split("@").last
+    self.company = Company.find_by_doamin_host email_domain
+  end
+
+  def must_use_work_email
+    email_domain = email.split("@").last
+    errors.add(:email, "is not match any company domain registered") unless Company.domains.include? email_domain
+  end
+
+  def type
+    'user'
+  end
 end
