@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306011241) do
+ActiveRecord::Schema.define(version: 20150306192336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,19 @@ ActiveRecord::Schema.define(version: 20150306011241) do
     t.string   "delivery_contact_email"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "commission_rate"
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "unit",              null: false
+    t.integer  "amount",            null: false
+    t.integer  "variant_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "commission_charge", null: false
+  end
+
+  add_index "orders", ["variant_id"], name: "index_orders_on_variant_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.text     "description"
@@ -104,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150306011241) do
   add_index "variants", ["our_sku"], name: "index_variants_on_our_sku", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
+  add_foreign_key "orders", "variants"
   add_foreign_key "products", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "variants", "products"

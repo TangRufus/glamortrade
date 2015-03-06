@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                :integer          not null, primary key
+#  unit              :integer          not null
+#  amount            :integer          not null
+#  variant_id        :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  commission_charge :integer          not null
+#
+# Indexes
+#
+#  index_orders_on_variant_id  (variant_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: 1
+  amount: 1
+  variant_id: 
+
+two:
+  unit: 1
+  amount: 1
+  variant_id: 

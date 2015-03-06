@@ -47,6 +47,10 @@ class ApplicationPolicy
     user.present? && user.type == 'user'
   end
 
+  def current_company
+    user.company if user.present?
+  end
+
   class Scope
     attr_reader :user, :scope
 
@@ -57,6 +61,19 @@ class ApplicationPolicy
 
     def resolve
       scope
+    end
+
+    protected
+    def admin?
+      user.present? && user.type == 'admin'
+    end
+
+    def normal_user?
+      user.present? && user.type == 'user'
+    end
+
+    def current_company
+      user.company if user.present?
     end
   end
 end

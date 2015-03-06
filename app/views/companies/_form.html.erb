@@ -2,9 +2,11 @@
 <% if admin_signed_in? %>
   <%= f.input :name %>
   <%= f.input :domain_url %>
+  <%= f.input :commission_rate %>
 <% else %>
   <%= f.input :name, disabled: true %>
   <%= f.input :domain_url, disabled: true %>
+  <%= f.input :commission_rate, disabled: true  %>
 <% end %>
 <%= f.input :low_stock_contact_email %>
 <%= f.input :out_of_stock_contact_email %>

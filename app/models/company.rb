@@ -10,6 +10,7 @@
 #  delivery_contact_email     :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
+#  commission_rate            :integer
 #
 
 class Company < ActiveRecord::Base
@@ -20,9 +21,13 @@ class Company < ActiveRecord::Base
   validates :low_stock_contact_email, presence: true, :email => true
   validates :out_of_stock_contact_email, presence: true, :email => true
   validates :delivery_contact_email, presence: true, :email => true
+  validates :commission_rate, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 100 }
 
   has_many :users
   has_many :products
+
+  has_many :variants, through: :products
+  has_many :orders, through: :variants
 
   def self.domains
     companies = Company.all

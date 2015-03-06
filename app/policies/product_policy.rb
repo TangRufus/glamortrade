@@ -16,7 +16,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-     admin? || (super && owned?)
+    admin? || (super && owned?)
   end
 
   def create?
@@ -25,6 +25,14 @@ class ProductPolicy < ApplicationPolicy
 
   def update?
     admin? || normal_user?
+  end
+
+  def permitted_attributes
+    if admin?
+      [:name, :description, :commission_rate, variants_attributes: [:id, :name, :minimum_price, :inventory, :our_sku, :your_sku, :commission_rate]]
+    else
+      [:name, :description, variants_attributes: [:id, :name, :minimum_price, :inventory, :your_sku]]
+    end
   end
 
   private

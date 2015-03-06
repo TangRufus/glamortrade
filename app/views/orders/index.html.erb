@@ -1,0 +1,31 @@
+<%= content_for :title, 'Order' %>
+
+  <!-- Partial Responsive Block -->
+  <div class="block">
+    <!-- Partial Responsive Title -->
+    <div class="block-title">
+      <h2>Order</h2>
+    </div>
+    <!-- END Partial Responsive Title -->
+
+    <!-- Partial Responsive Content -->
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-vcenter">
+      <thead>
+        <tr>
+          <th>Variant Our SKU</th>
+          <th>Variant Your SKU</th>
+          <th>Unit</th>
+          <th>Amount</th>
+          <th>Commission Charge</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render @orders %>
+      </tbody>
+    </table>
+    </div>
+    <!-- END Partial Responsive Content -->
+  </div>
+  <!-- END Partial Responsive Block -->

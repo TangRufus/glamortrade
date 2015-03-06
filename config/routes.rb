@@ -54,16 +54,10 @@
 #
 
 Rails.application.routes.draw do
-
+  resources :orders, only: [:index, :new, :create]
   resources :companies
   resources :products
 
   devise_for :admins
   devise_for :users
-
-  # authenticate :admin do
-  #   namespace :admin do
-  #     resources :companies
-  #   end
-  # end
 end

@@ -18,4 +18,6 @@
 class Product < ActiveRecord::Base
   belongs_to :company
   has_many :variants
+
+  delegate :orders, to: :variant
 end

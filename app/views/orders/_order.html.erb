@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to order.variant.our_sku, product_path(order.product) %></td>
+  <td><%= link_to order.variant.your_sku, product_path(order.product) %></td>
+  <td><%= order.unit %></td>
+  <td><%= order.amount %></td>
+  <td><%= order.commission_charge %></td>
+</tr>

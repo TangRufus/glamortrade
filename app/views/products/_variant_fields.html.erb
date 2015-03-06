@@ -15,6 +15,11 @@
     <%= f.input :minimum_price, as: :integer %>
   </div>
 
+  <% if admin_signed_in? %>
+    <%= f.input :commission_rate %>
+    <%= f.input :our_sku %>
+  <% end %>
+
   <%= link_to_remove_association "Delete Variant", f, class: "btn btn-effect-ripple btn-default pull-right" %>
 </div>
 
