@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  after_action :verify_authorized, unless: :skip_pundit
+  # after_action :verify_authorized, unless: :skip_pundit
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   devise_group :person, contains: [:user, :admin]
 
   protected
+
+  def current_company
+    current_user.company if current_user.present?
+  end
 
   def layout_by_access
     if devise_controller?

@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id              :integer          not null, primary key
+#  description     :text
+#  commission_rate :integer
+#  name            :string           not null
+#  company_id      :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_products_on_company_id  (company_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  commission_rate: 1
+  name: MyString
+  company_id: 
+
+two:
+  description: MyString
+  commission_rate: 1
+  name: MyString
+  company_id: 

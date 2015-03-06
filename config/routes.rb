@@ -56,6 +56,7 @@
 Rails.application.routes.draw do
 
   resources :companies
+  resources :products
 
   devise_for :admins
   devise_for :users

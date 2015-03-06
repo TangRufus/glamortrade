@@ -22,6 +22,7 @@ class Company < ActiveRecord::Base
   validates :delivery_contact_email, presence: true, :email => true
 
   has_many :users
+  has_many :products
 
   def self.domains
     companies = Company.all

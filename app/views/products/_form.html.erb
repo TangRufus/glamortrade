@@ -1,0 +1,18 @@
+<%= simple_form_for @product_form, wrapper: :horizontal_form, :html => {:class => 'form-horizontal' } do |f| %>
+<div class="field">
+  <%= f.input :name %>
+  </div>
+    <div class="field">
+  <%= f.input :description, as: :text %>
+</div>
+  <%= f.simple_fields_for :variants do |variant_fields| %>
+    <%= render "variant_fields", :f => variant_fields %>
+  <% end %>
+
+  <div class="links">
+    <%= link_to_add_association "Add New Variant", f, :variants, class: "btn btn-effect-ripple btn-success" %>
+  </div>
+<div class="actions">
+  <%= f.button :submit, class: "btn btn-lg btn-block btn-effect-ripple btn-primary" %>
+  </div>
+<% end %>
