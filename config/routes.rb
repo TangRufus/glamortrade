@@ -1,6 +1,9 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                       Controller#Action
+#                    orders GET    /orders(.:format)                 orders#index
+#                           POST   /orders(.:format)                 orders#create
+#                 new_order GET    /orders/new(.:format)             orders#new
 #                 companies GET    /companies(.:format)              companies#index
 #                           POST   /companies(.:format)              companies#create
 #               new_company GET    /companies/new(.:format)          companies#new
@@ -9,6 +12,14 @@
 #                           PATCH  /companies/:id(.:format)          companies#update
 #                           PUT    /companies/:id(.:format)          companies#update
 #                           DELETE /companies/:id(.:format)          companies#destroy
+#                  products GET    /products(.:format)               products#index
+#                           POST   /products(.:format)               products#create
+#               new_product GET    /products/new(.:format)           products#new
+#              edit_product GET    /products/:id/edit(.:format)      products#edit
+#                   product GET    /products/:id(.:format)           products#show
+#                           PATCH  /products/:id(.:format)           products#update
+#                           PUT    /products/:id(.:format)           products#update
+#                           DELETE /products/:id(.:format)           products#destroy
 #         new_admin_session GET    /admins/sign_in(.:format)         devise/sessions#new
 #             admin_session POST   /admins/sign_in(.:format)         devise/sessions#create
 #     destroy_admin_session DELETE /admins/sign_out(.:format)        devise/sessions#destroy
