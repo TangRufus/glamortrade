@@ -1,6 +1,12 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                       Controller#Action
+#                     bills GET    /bills(.:format)                  bills#index
+#                           POST   /bills(.:format)                  bills#create
+#                  new_bill GET    /bills/new(.:format)              bills#new
+#                 edit_bill GET    /bills/:id/edit(.:format)         bills#edit
+#                      bill PATCH  /bills/:id(.:format)              bills#update
+#                           PUT    /bills/:id(.:format)              bills#update
 #                    orders GET    /orders(.:format)                 orders#index
 #                           POST   /orders(.:format)                 orders#create
 #                 new_order GET    /orders/new(.:format)             orders#new
@@ -65,6 +71,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :bills, only: [:index, :new, :create, :edit, :update]
   resources :orders, only: [:index, :new, :create]
   resources :companies
   resources :products

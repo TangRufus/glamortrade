@@ -1,0 +1,11 @@
+<tr>
+  <% if admin_signed_in? %>
+    <td><%= link_to bill.company.name, company_path(bill.company) %></td>
+  <% end %>
+  <td><%= bill.title %></td>
+  <td><%= bill.amount %></td>
+  <td><%= bill.description %></td>
+  <% if admin_signed_in? %>
+    <td><%= link_to "Edit", edit_bill_path(bill), class: "btn btn-primary text-center" %></td>
+  <% end %>
+</tr>

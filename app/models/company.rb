@@ -25,6 +25,7 @@ class Company < ActiveRecord::Base
 
   has_many :users
   has_many :products
+  has_many :bills
 
   has_many :variants, through: :products
   has_many :orders, through: :variants
