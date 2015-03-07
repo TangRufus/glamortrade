@@ -6,8 +6,8 @@ class ReportsController < ApplicationController
 
     @earnings = @order_total_amount - @order_total_commission_charge - @bill_total_amount
 
-    @bills = Bill.where(company: current_company)
-    @orders = current_company.orders
-    @products = Product.where(company: current_company)
+    @bills = Bill.where(company: current_company).limit(5).order('updated_at DESC')
+    @orders = current_company.orders.limit(5).order('updated_at DESC')
+    @products = Product.where(company: current_company).limit(5).order('updated_at DESC')
   end
 end
