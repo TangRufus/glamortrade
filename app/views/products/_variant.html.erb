@@ -16,9 +16,12 @@
       <td><strong>Minimum Price</strong></td>
       <td><%= variant.minimum_price %></td>
     </tr>
+
+    <% if variant.commission_rate.present? %>
     <tr>
       <td><strong>Commission Rate</strong></td>
       <td><%= variant.commission_rate %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>

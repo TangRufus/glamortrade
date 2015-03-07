@@ -24,10 +24,12 @@
           <td><strong>Description</strong></td>
           <td><%= @product.description %></td>
         </tr>
+        <% if @product.commission_rate.present? %>
         <tr>
           <td><strong>Commission Rate</strong></td>
           <td><%= @product.commission_rate %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
     <br />

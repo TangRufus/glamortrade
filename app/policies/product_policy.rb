@@ -29,9 +29,9 @@ class ProductPolicy < ApplicationPolicy
 
   def permitted_attributes
     if admin?
-      [:name, :description, :commission_rate, variants_attributes: [:id, :name, :minimum_price, :inventory, :our_sku, :your_sku, :commission_rate]]
+      [:name, :description, :commission_rate, :ads_budget, variants_attributes: [:id, :name, :minimum_price, :inventory, :our_sku, :your_sku, :commission_rate]]
     else
-      [:name, :description, variants_attributes: [:id, :name, :minimum_price, :inventory, :your_sku]]
+      [:name, :description, :ads_budget, variants_attributes: [:id, :name, :minimum_price, :inventory, :your_sku]]
     end
   end
 

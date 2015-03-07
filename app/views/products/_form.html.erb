@@ -6,6 +6,11 @@
   <div class="field">
     <%= f.input :description, as: :text %>
   </div>
+
+  <div class="field">
+    <%= f.input :ads_budget, as: :integer %>
+  </div>
+
   <% if admin_signed_in? %>
     <%= f.input :commission_rate %>
   <% end %>
