@@ -71,6 +71,8 @@
 #
 
 Rails.application.routes.draw do
+  get 'reports/index'
+
   resources :bills, only: [:index, :new, :create, :edit, :update]
   resources :orders, only: [:index, :new, :create]
   resources :companies

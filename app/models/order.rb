@@ -28,6 +28,18 @@ class Order < ActiveRecord::Base
   delegate :product, to: :variant
   delegate :company, to: :product
 
+
+  def self.total_amount company
+    orders = company.orders
+    orders.sum("amount")
+  end
+
+
+  def self.total_commission_charge company
+    orders = company.orders
+    orders.sum("commission_charge")
+  end
+
   def calculate_commission
     self.commission_charge = amount * commission_rate / 100
   end

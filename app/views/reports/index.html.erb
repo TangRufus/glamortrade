@@ -1,0 +1,58 @@
+ <!-- First Row -->
+ <div class="row">
+  <!-- Simple Stats Widgets -->
+  <div class="col-sm-6 col-lg-3">
+    <a href="javascript:void(0)" class="widget">
+      <div class="widget-content widget-content-mini text-right clearfix">
+        <div class="widget-icon pull-left themed-background">
+          <i class="gi gi-cardio text-light-op"></i>
+        </div>
+        <h2 class="widget-heading h3">
+          <strong>$ <span data-toggle="counter" data-to="<%= @order_total_amount %>"><%= @order_total_amount %></span></strong>
+        </h2>
+        <span class="text-muted">SALES</span>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a href="javascript:void(0)" class="widget">
+      <div class="widget-content widget-content-mini text-right clearfix">
+        <div class="widget-icon pull-left themed-background-success">
+          <i class="fa fa-cube fa-lg text-light-op"></i>
+        </div>
+        <h2 class="widget-heading h3 text-success">
+          <strong>- $ <span data-toggle="counter" data-to="<%= @order_total_commission_charge %>"><%= @order_total_commission_charge %></span></strong>
+        </h2>
+        <span class="text-muted">COMMISSION</span>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a href="javascript:void(0)" class="widget">
+      <div class="widget-content widget-content-mini text-right clearfix">
+        <div class="widget-icon pull-left themed-background-warning">
+          <i class="gi gi-briefcase text-light-op"></i>
+        </div>
+        <h2 class="widget-heading h3 text-warning">
+          <strong>- $ <span data-toggle="counter" data-to="<%= @bill_total_amount %>"><%= @bill_total_amount %></span></strong>
+        </h2>
+        <span class="text-muted">EXPENSE</span>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a href="javascript:void(0)" class="widget">
+      <div class="widget-content widget-content-mini text-right clearfix">
+        <div class="widget-icon pull-left themed-background-danger">
+          <i class="gi gi-wallet text-light-op"></i>
+        </div>
+        <h2 class="widget-heading h3 text-danger">
+          <strong>= $ <span data-toggle="counter" data-to="<%= @earnings %>"><%= @earnings %></span></strong>
+        </h2>
+        <span class="text-muted">Earnings</span>
+      </div>
+    </a>
+  </div>
+  <!-- END Simple Stats Widgets -->
+</div>
+<!-- END First Row -->

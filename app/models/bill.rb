@@ -17,4 +17,9 @@
 
 class Bill < ActiveRecord::Base
   belongs_to :company
+
+  def self.total_amount company
+    bills = Bill.where(company: company)
+    bills.sum("amount")
+  end
 end
