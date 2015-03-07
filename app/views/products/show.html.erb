@@ -34,12 +34,13 @@
           <td><strong>Ads Budget</strong></td>
           <td><%= @product.ads_budget %></td>
         </tr>
+
+        <% @product.variants.each do |variant| %>
+        <%= render partial: "variant", object: variant %>
+        <% end %>
+
       </tbody>
     </table>
-    <br />
-    <% @product.variants.each do |variant| %>
-      <%= render partial: "variant", object: variant %>
-    <% end %>
 
     <!-- END Partial Responsive Content -->
   </div>

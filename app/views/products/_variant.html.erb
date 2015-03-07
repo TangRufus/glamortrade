@@ -1,27 +1,24 @@
-<table class="table table-striped table-borderless table-vcenter">
-  <tbody>
-    <tr>
-      <td><strong>Product Name</strong></td>
-      <td><%= variant.name %></td>
-    </tr>
-    <tr>
-      <td><strong>Description</strong></td>
-      <td><%= variant.your_sku %></td>
-    </tr>
-    <tr>
-      <td><strong>Inventory</strong></td>
-      <td><%= variant.inventory %></td>
-    </tr>
-    <tr>
-      <td><strong>Minimum Price</strong></td>
-      <td><%= variant.minimum_price %></td>
-    </tr>
+<tr class="info"><td></td><td></td></tr>
+<tr>
+  <td><strong>Variant Name</strong></td>
+  <td><%= variant.name %></td>
+</tr>
+<tr>
+  <td><strong>Description</strong></td>
+  <td><%= variant.your_sku %></td>
+</tr>
+<tr>
+  <td><strong>Inventory</strong></td>
+  <td><%= variant.inventory %></td>
+</tr>
+<tr>
+  <td><strong>Minimum Price</strong></td>
+  <td><%= variant.minimum_price %></td>
+</tr>
 
-    <% if variant.commission_rate.present? %>
-    <tr>
-      <td><strong>Commission Rate</strong></td>
-      <td><%= variant.commission_rate %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if variant.commission_rate.present? %>
+<tr>
+  <td><strong>Commission Rate</strong></td>
+  <td><%= variant.commission_rate %></td>
+</tr>
+<% end %>
