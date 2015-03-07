@@ -10,8 +10,15 @@ class ApplicationController < ActionController::Base
 
   devise_group :person, contains: [:user, :admin]
 
-  protected
+  def after_sign_in_path_for(resource)
+    if current_user.present?
+      dashboard_path
+    else
+      companies_path
+    end
+  end
 
+  protected
   def current_company
     current_user.company if current_user.present?
   end

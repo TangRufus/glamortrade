@@ -24,9 +24,6 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 gem 'unicorn', '~> 4.8.3'
 
-# Static Pages
-gem 'high_voltage', '~> 2.2.1'
-
 # Authentication
 gem 'devise', '~> 3.4.1'
 gem 'pundit', '~> 0.3.0'

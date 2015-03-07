@@ -1,6 +1,7 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                       Controller#Action
+#                 dashboard GET    /dashboard(.:format)              reports#index
 #                     bills GET    /bills(.:format)                  bills#index
 #                           POST   /bills(.:format)                  bills#create
 #                  new_bill GET    /bills/new(.:format)              bills#new
@@ -17,7 +18,6 @@
 #                   company GET    /companies/:id(.:format)          companies#show
 #                           PATCH  /companies/:id(.:format)          companies#update
 #                           PUT    /companies/:id(.:format)          companies#update
-#                           DELETE /companies/:id(.:format)          companies#destroy
 #                  products GET    /products(.:format)               products#index
 #                           POST   /products(.:format)               products#create
 #               new_product GET    /products/new(.:format)           products#new
@@ -25,7 +25,6 @@
 #                   product GET    /products/:id(.:format)           products#show
 #                           PATCH  /products/:id(.:format)           products#update
 #                           PUT    /products/:id(.:format)           products#update
-#                           DELETE /products/:id(.:format)           products#destroy
 #         new_admin_session GET    /admins/sign_in(.:format)         devise/sessions#new
 #             admin_session POST   /admins/sign_in(.:format)         devise/sessions#create
 #     destroy_admin_session DELETE /admins/sign_out(.:format)        devise/sessions#destroy
@@ -65,19 +64,21 @@
 #               user_unlock POST   /users/unlock(.:format)           devise/unlocks#create
 #           new_user_unlock GET    /users/unlock/new(.:format)       devise/unlocks#new
 #                           GET    /users/unlock(.:format)           devise/unlocks#show
-#                      home GET    /home(.:format)                   redirect(301, /)
-#                      root GET    /                                 high_voltage/pages#show {:id=>"home"}
-#                      page GET    /*id                              high_voltage/pages#show
+#                      root GET    /                                 redirect(301, users/sign_in)
 #
 
 Rails.application.routes.draw do
-  get 'reports/index'
+
+  get '/dashboard', to: 'reports#index', as: 'dashboard'
 
   resources :bills, only: [:index, :new, :create, :edit, :update]
   resources :orders, only: [:index, :new, :create]
-  resources :companies
-  resources :products
+  resources :companies, except: :destroy
+  resources :products, except: :destroy
 
   devise_for :admins
   devise_for :users
+
+  root to: redirect('users/sign_in')
+
 end
