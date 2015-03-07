@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
     @earnings = @order_total_amount - @order_total_commission_charge - @bill_total_amount
 
     @bills = Bill.where(company: current_company)
-    @orders = Order.where(company: current_company)
+    @orders = current_company.orders
     @products = Product.where(company: current_company)
   end
 end
