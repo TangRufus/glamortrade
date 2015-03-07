@@ -9,6 +9,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  commission_charge :integer          not null
+#  status            :string
 #
 # Indexes
 #
@@ -17,6 +18,7 @@
 
 class Order < ActiveRecord::Base
   before_validation :calculate_commission
+  before_validation :set_status
   after_create :reduce_inventory
 
   validates :unit, presence: true, numericality: { only_integer: true }
@@ -38,6 +40,10 @@ class Order < ActiveRecord::Base
   def self.total_commission_charge company
     orders = company.orders
     orders.sum("commission_charge")
+  end
+
+  def set_status
+    self.status ||= "Completed"
   end
 
   def calculate_commission
