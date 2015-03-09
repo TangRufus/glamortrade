@@ -8,7 +8,7 @@
           <i class="gi gi-cardio text-light-op"></i>
         </div>
         <h2 class="widget-heading h3">
-          <strong>+ &yen; <span data-toggle="counter" data-to="<%= @order_total_amount %>"><%= @order_total_amount %></span></strong>
+          <strong>+ <span data-toggle="counter" data-to="<%= @order_total_amount %>"><%= number_to_currency @order_total_amount %></span></strong>
         </h2>
         <span class="text-muted">SALES</span>
       </div>
@@ -21,7 +21,7 @@
           <i class="fa fa-cube fa-lg text-light-op"></i>
         </div>
         <h2 class="widget-heading h3 text-success">
-          <strong>- &yen; <span data-toggle="counter" data-to="<%= @order_total_commission_charge %>"><%= @order_total_commission_charge %></span></strong>
+          <strong>- <span data-toggle="counter" data-to="<%= @order_total_commission_charge %>"><%= number_to_currency @order_total_commission_charge %></span></strong>
         </h2>
         <span class="text-muted">COMMISSION</span>
       </div>
@@ -34,7 +34,7 @@
           <i class="gi gi-briefcase text-light-op"></i>
         </div>
         <h2 class="widget-heading h3 text-warning">
-          <strong>- &yen; <span data-toggle="counter" data-to="<%= @bill_total_amount %>"><%= @bill_total_amount %></span></strong>
+          <strong>- <span data-toggle="counter" data-to="<%= @bill_total_amount %>"><%= number_to_currency @bill_total_amount %></span></strong>
         </h2>
         <span class="text-muted">EXPENSE</span>
       </div>
@@ -47,7 +47,7 @@
           <i class="gi gi-wallet text-light-op"></i>
         </div>
         <h2 class="widget-heading h3 text-danger">
-          <strong>= &yen; <span data-toggle="counter" data-to="<%= @earnings %>"><%= @earnings %></span></strong>
+          <strong>= <span data-toggle="counter" data-to="<%= @earnings %>"><%= number_to_currency @earnings %></span></strong>
         </h2>
         <span class="text-muted">EARNINGS</span>
       </div>
