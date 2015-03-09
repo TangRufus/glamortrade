@@ -20,7 +20,7 @@
 <ul class="nav navbar-nav-custom pull-right">
   <% if user_signed_in? %>
       <li class="hidden-xs animation-fadeInQuick">
-      <li><%= link_to 'Edit company', edit_company_path(current_user.company) %></li>
+      <li><%= link_to current_company.name, edit_company_path(current_company) %></li>
     </li>
     <li class="hidden-xs animation-fadeInQuick">
       <li><%= link_to 'Edit account', edit_user_registration_path %></li>
