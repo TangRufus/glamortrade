@@ -33,7 +33,7 @@
           <% end %>
           <tr>
             <td><strong>Ads Budget</strong></td>
-            <td><%= @product.ads_budget %></td>
+            <td><%= number_to_currency @product.ads_budget %></td>
           </tr>
 
           <% @product.variants.each do |variant| %>
