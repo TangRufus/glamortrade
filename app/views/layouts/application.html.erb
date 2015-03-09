@@ -13,6 +13,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
+  <% if admin_signed_in? %>
+    <%= stylesheet_link_tag  'appui_amethyst', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
   <!-- Modernizr (browser feature detection library) -->
   <%= javascript_include_tag 'modernizr' %>
 

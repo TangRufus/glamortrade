@@ -14,12 +14,16 @@
     <div class="sidebar-content">
       <!-- Sidebar Navigation -->
       <ul class="sidebar-nav">
+
+        <% if !admin_signed_in? %>
         <li>
           <%= link_to "<i class='gi gi-compass sidebar-nav-icon'></i><span class='sidebar-nav-mini-hide'>Dashboard</span>", dashboard_path %>
         </li>
         <li class="sidebar-separator">
           <i class="fa fa-ellipsis-h"></i>
         </li>
+        <% end %>
+
         <li>
           <%= link_to  "<i class='gi gi-gift  sidebar-nav-icon'></i></i><span class='sidebar-nav-mini-hide'>Products</span>", products_path %>
         </li>
