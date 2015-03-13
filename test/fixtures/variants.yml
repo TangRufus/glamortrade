@@ -3,20 +3,21 @@
 # Table name: variants
 #
 #  id              :integer          not null, primary key
+#  taobao_sku      :integer
 #  your_sku        :string
-#  minimum_price   :integer          not null
+#  minimum_price   :decimal(12, 2)   not null
 #  commission_rate :integer
 #  name            :string           not null
-#  product_id      :integer
-#  inventory       :integer          not null
+#  inventory       :integer          default(0), not null
+#  product_id      :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  our_sku         :string
 #
 # Indexes
 #
-#  index_variants_on_our_sku     (our_sku)
 #  index_variants_on_product_id  (product_id)
+#  index_variants_on_taobao_sku  (taobao_sku)
+#  index_variants_on_your_sku    (your_sku)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

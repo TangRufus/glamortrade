@@ -36,8 +36,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      # params.require(:order).permit(*policy(@order || Order).permitted_attributes)
-      params.require(:order).permit(:unit, :amount, :variant_id)
+      params.require(:order).permit(*policy(@order || Order).permitted_attributes)
     end
   end
 

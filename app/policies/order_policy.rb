@@ -10,13 +10,16 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
-
   def index?
     admin? || normal_user?
   end
 
   def create?
     admin?
+  end
+
+  def permitted_attributes
+    [:unit, :amount, :variant_id] if admin?
   end
 
   private

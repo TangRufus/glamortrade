@@ -61,25 +61,29 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-      # authorize @product
-    end
-
-    def create_new_form
-      product = current_company.products.new
-      # authorize product
-      @product_form = ProductForm.new(product)
-    end
-
-    def create_edit_form
-      @product_form = ProductForm.new(@product)
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(*policy(@product || Product).permitted_attributes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+    authorize @product
   end
 
+  def create_new_form
+    if current_company.present?
+      product = current_company.products.new
+    else
+      product = Product.new
+    end
+
+    authorize product
+    @product_form = ProductForm.new(product)
+  end
+
+  def create_edit_form
+    @product_form = ProductForm.new(@product)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(*policy(@product || Product).permitted_attributes)
+  end
+end

@@ -4,6 +4,11 @@
   <div class="block">
     <!-- Partial Responsive Title -->
     <div class="block-title">
+      <div class="block-options pull-right">
+        <% if policy(Company).create? %>
+          <%= link_to 'Add New', new_company_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
       <h2>Companies</h2>
     </div>
     <!-- END Partial Responsive Title -->
@@ -14,11 +19,9 @@
       <thead>
         <tr>
           <th>Company Name</th>
-          <th>Domain URL</th>
+          <th>Email Host</th>
           <th>Commission Rate</th>
-          <th>Low Stock Contact Email</th>
-          <th>Out Of Stock Contact Email</th>
-          <th>Delivery Contact Email</th>
+          <th>Inventory Contact Email</th>
           <th>Action</th>
         </tr>
       </thead>

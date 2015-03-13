@@ -15,7 +15,10 @@
       <!-- Sidebar Navigation -->
       <ul class="sidebar-nav">
 
-        <% if !admin_signed_in? %>
+        <% if admin_signed_in? %>
+          <%= link_to "<i class='gi gi-home sidebar-nav-icon'></i><span class='sidebar-nav-mini-hide'>Companies</span>", companies_path %>
+        </li>
+        <% else %>
         <li>
           <%= link_to "<i class='gi gi-compass sidebar-nav-icon'></i><span class='sidebar-nav-mini-hide'>Dashboard</span>", dashboard_path %>
         </li>

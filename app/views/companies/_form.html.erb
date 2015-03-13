@@ -1,15 +1,17 @@
 <%= simple_form_for @company_form, wrapper: :horizontal_form, :html => {:class => 'form-horizontal' } do |f| %>
-<% if admin_signed_in? %>
-  <%= f.input :name %>
-  <%= f.input :domain_url %>
-  <%= f.input :commission_rate %>
-<% else %>
-  <%= f.input :name, disabled: true %>
-  <%= f.input :domain_url, disabled: true %>
-  <%= f.input :commission_rate, disabled: true  %>
-<% end %>
-<%= f.input :low_stock_contact_email %>
-<%= f.input :out_of_stock_contact_email %>
-<%= f.input :delivery_contact_email %>
-<%= f.button :submit, class: "btn btn-lg btn-block btn-effect-ripple btn-primary" %>
+  <%= f.input :name, label: "Company name", disabled: !admin_signed_in? %>
+
+  <%= f.input :email_host, wrapper: :horizontal_input_group, hint: "Users registered with this email host will be added to your company" do %>
+    <span class="input-group-addon">username@</span>
+    <%= f.input_field :email_host, as: :string, class: "form-control", disabled: !admin_signed_in?  %>
+  <% end %>
+
+  <%= f.input :commission_rate, wrapper: :horizontal_input_group, hint: "integer between 0 and 100" do %>
+    <%= f.input_field :commission_rate, as: :integer, min: 0, max: 100, class: "form-control", disabled: !admin_signed_in?  %>
+    <span class="input-group-addon">%</span>
+  <% end %>
+
+  <%= f.input :inventory_contact_email, hint: "Out of stock and low stock alerts will be sent to this email" %>
+
+  <%= f.button :button, class: "btn btn-lg btn-block btn-effect-ripple btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Just a moment..."} %>
 <% end %>

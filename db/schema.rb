@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307021049) do
+ActiveRecord::Schema.define(version: 20150306222837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,47 +40,45 @@ ActiveRecord::Schema.define(version: 20150307021049) do
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
   create_table "bills", force: :cascade do |t|
-    t.integer  "company_id",  null: false
-    t.integer  "amount",      null: false
-    t.text     "description", null: false
-    t.string   "title",       null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "company_id",                           null: false
+    t.decimal  "amount",      precision: 12, scale: 2, null: false
+    t.text     "description"
+    t.string   "title",                                null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "bills", ["company_id"], name: "index_bills_on_company_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.string   "domain_url",                 null: false
-    t.string   "low_stock_contact_email"
-    t.string   "out_of_stock_contact_email"
-    t.string   "delivery_contact_email"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "commission_rate"
+    t.string   "name",                                 null: false
+    t.string   "email_host",                           null: false
+    t.string   "inventory_contact_email",              null: false
+    t.integer  "commission_rate",         default: 10, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "unit",              null: false
-    t.integer  "amount",            null: false
-    t.integer  "variant_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "commission_charge", null: false
+    t.integer  "unit",                                    null: false
+    t.decimal  "amount",         precision: 12, scale: 2, null: false
+    t.decimal  "commission_fee", precision: 12, scale: 2, null: false
     t.string   "status"
+    t.integer  "variant_id",                              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "orders", ["variant_id"], name: "index_orders_on_variant_id", using: :btree
 
   create_table "products", force: :cascade do |t|
+    t.string   "name",                        null: false
     t.text     "description"
     t.integer  "commission_rate"
-    t.string   "name",            null: false
-    t.integer  "company_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "ads_budget"
+    t.integer  "ads_budget",      default: 0, null: false
+    t.integer  "company_id",                  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree
@@ -105,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150307021049) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_id"
+    t.integer  "company_id",                          null: false
   end
 
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
@@ -115,19 +113,20 @@ ActiveRecord::Schema.define(version: 20150307021049) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "variants", force: :cascade do |t|
+    t.integer  "taobao_sku"
     t.string   "your_sku"
-    t.integer  "minimum_price",   null: false
+    t.decimal  "minimum_price",   precision: 12, scale: 2,             null: false
     t.integer  "commission_rate"
-    t.string   "name",            null: false
-    t.integer  "product_id"
-    t.integer  "inventory",       null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "our_sku"
+    t.string   "name",                                                 null: false
+    t.integer  "inventory",                                default: 0, null: false
+    t.integer  "product_id",                                           null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
-  add_index "variants", ["our_sku"], name: "index_variants_on_our_sku", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
+  add_index "variants", ["taobao_sku"], name: "index_variants_on_taobao_sku", using: :btree
+  add_index "variants", ["your_sku"], name: "index_variants_on_your_sku", using: :btree
 
   add_foreign_key "bills", "companies"
   add_foreign_key "orders", "variants"

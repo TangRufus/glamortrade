@@ -2,14 +2,14 @@
 #
 # Table name: orders
 #
-#  id                :integer          not null, primary key
-#  unit              :integer          not null
-#  amount            :integer          not null
-#  variant_id        :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  commission_charge :integer          not null
-#  status            :string
+#  id             :integer          not null, primary key
+#  unit           :integer          not null
+#  amount         :decimal(12, 2)   not null
+#  commission_fee :decimal(12, 2)   not null
+#  status         :string
+#  variant_id     :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 # Indexes
 #
@@ -21,9 +21,11 @@ class Order < ActiveRecord::Base
   before_validation :set_status
   after_create :reduce_inventory
 
-  validates :unit, presence: true, numericality: { only_integer: true }
-  validates :amount, presence: true, numericality: { only_integer: true }
-  validates :variant_id, presence: true, numericality: { only_integer: true }
+  validates :unit, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :amount, presence: true, numericality: true
+
+  validates :variant, presence: true
+  validates_associated :variant
 
   belongs_to :variant
 
@@ -37,9 +39,9 @@ class Order < ActiveRecord::Base
   end
 
 
-  def self.total_commission_charge company
+  def self.total_commission_fee company
     orders = company.orders
-    orders.sum("commission_charge")
+    orders.sum("commission_fee")
   end
 
   def set_status
@@ -47,7 +49,7 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_commission
-    self.commission_charge = amount * commission_rate / 100
+    self.commission_fee = amount * commission_rate / 100
   end
 
   def reduce_inventory

@@ -6,6 +6,6 @@ class ProductForm < ActionForm::Base
 
   association :variants do
     attributes :name, :minimum_price, :inventory, required: true
-    attributes :our_sku, :your_sku, :commission_rate
+    attributes :taobao_sku_id, :your_sku, :commission_rate
   end
 end

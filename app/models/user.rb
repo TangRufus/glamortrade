@@ -22,7 +22,7 @@
 #  locked_at              :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
-#  company_id             :integer
+#  company_id             :integer          not null
 #
 # Indexes
 #
@@ -44,19 +44,19 @@ class User < ActiveRecord::Base
 
   validate :must_use_work_email
   validates :company, presence: true
+  validates_associated :company
 
   belongs_to :company
 
   def set_company
-    return if self.company.presence
+    return if self.company.present?
 
-    email_domain = email.split("@").last
-    self.company = Company.find_by_doamin_host email_domain
+    email_host = email.split("@").last
+    self.company = Company.find_by email_host: email_host
   end
 
   def must_use_work_email
-    email_domain = email.split("@").last
-    errors.add(:email, "is not match any company domain registered") unless Company.domains.include? email_domain
+    errors.add(:email, "is not match any company domain registered") if self.company.blank?
   end
 
   def type

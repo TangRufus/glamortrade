@@ -6,8 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
-    authorize @companies
+    @companies = policy_scope(Company)
   end
 
   # GET /companies/1
@@ -32,7 +31,7 @@ class CompaniesController < ApplicationController
       if @company_form.save
         format.html { redirect_to @company_form, notice: "Company: #{@company_form.name} was successfully created." }
       else
-        format.html { render :new }
+        format.html { render :new, notice: "Opss.. Something went wrong" }
       end
     end
   end
@@ -46,18 +45,8 @@ class CompaniesController < ApplicationController
       if @company_form.save
         format.html { redirect_to @company_form, notice: "Company: #{@company_form.name} was successfully updated." }
       else
-        format.html { render :edit }
+        format.html { render :edit, notice: "Opss.. Something went wrong" }
       end
-    end
-  end
-
-  # DELETE /companies/1
-  # DELETE /companies/1.json
-  def destroy
-    name = @company.name
-    @company.destroy
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: "Company: #{name} was successfully destroyed." }
     end
   end
 
@@ -80,6 +69,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
- params.require(:company).permit(*policy(@company || Company).permitted_attributes)
+      params.require(:company).permit(*policy(@company || Company).permitted_attributes)
     end
   end

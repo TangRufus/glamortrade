@@ -16,7 +16,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? || (super && owned?)
+    super && (admin? || owned?)
   end
 
   def create?

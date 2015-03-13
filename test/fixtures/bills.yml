@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  company_id  :integer          not null
-#  amount      :integer          not null
-#  description :text             not null
+#  amount      :decimal(12, 2)   not null
+#  description :text
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

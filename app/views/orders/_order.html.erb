@@ -1,8 +1,8 @@
 <tr>
-  <td><%= link_to order.variant.our_sku, product_path(order.product) %></td>
+  <td><%= order.created_at.strftime("%d %B %Y") %></td>
   <td><%= link_to order.variant.your_sku, product_path(order.product) %></td>
   <td><%= order.unit %></td>
   <td><%= number_to_currency order.amount %></td>
-  <td><%= number_to_currency order.commission_charge %></td>
+  <td><%= number_to_currency order.commission_fee %></td>
   <td><%= order.status %></td>
 </tr>

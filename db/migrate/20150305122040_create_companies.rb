@@ -2,10 +2,9 @@ class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
       t.string :name, null: false
-      t.string :domain_url, null: false
-      t.string :low_stock_contact_email
-      t.string :out_of_stock_contact_email
-      t.string :delivery_contact_email
+      t.string :email_host, null: false
+      t.string :inventory_contact_email, null: false
+      t.integer :commission_rate, null: false, default: 10
 
       t.timestamps null: false
     end

@@ -69,16 +69,15 @@
 
 Rails.application.routes.draw do
 
-  get '/dashboard', to: 'reports#index', as: 'dashboard'
+  get '/dashboard', to: 'dashboards#index', as: 'dashboard'
 
   resources :bills, only: [:index, :new, :create, :edit, :update]
   resources :orders, only: [:index, :new, :create]
   resources :companies, except: :destroy
   resources :products, except: :destroy
 
-  devise_for :admins
   devise_for :users
+  devise_for :admins
 
   root to: redirect('users/sign_in')
-
 end

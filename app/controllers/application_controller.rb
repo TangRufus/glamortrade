@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  # after_action :verify_authorized, unless: :skip_pundit
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  devise_group :person, contains: [:user, :admin]
 
   layout :layout_by_access
 
-  devise_group :person, contains: [:user, :admin]
+  before_action :authenticate_person!, unless: :skip_authenticate?
+  after_action :verify_authorized, :except => :index, unless: :skip_authenticate?
+  after_action :verify_policy_scoped, :only => :index, unless: :skip_authenticate?
 
   def after_sign_in_path_for(resource)
     if current_user.present?
@@ -36,11 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def skip_pundit
-    devise_controller? || high_voltage_controller?
-  end
-
-  def high_voltage_controller?
-    controller_path == "high_voltage/pages"
+  def skip_authenticate?
+    devise_controller?
   end
 end

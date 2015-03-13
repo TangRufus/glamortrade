@@ -2,15 +2,13 @@
 #
 # Table name: companies
 #
-#  id                         :integer          not null, primary key
-#  name                       :string           not null
-#  domain_url                 :string           not null
-#  low_stock_contact_email    :string
-#  out_of_stock_contact_email :string
-#  delivery_contact_email     :string
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
-#  commission_rate            :integer
+#  id                      :integer          not null, primary key
+#  name                    :string           not null
+#  email_host              :string           not null
+#  inventory_contact_email :string           not null
+#  commission_rate         :integer          default(10), not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

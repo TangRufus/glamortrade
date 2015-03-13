@@ -10,6 +10,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore Brakeman
+*brakeman*
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep

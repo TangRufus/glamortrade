@@ -3,9 +3,9 @@ class BillPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if admin?
-        scope.all
+        scope.all.order(updated_at: :desc)
       else
-        current_company.bills
+        current_company.bills.order(updated_at: :desc)
       end
     end
   end

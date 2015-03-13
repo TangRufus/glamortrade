@@ -48,7 +48,7 @@ class ApplicationPolicy
   end
 
   def current_company
-    user.company if user.present?
+    user.company if normal_user?
   end
 
   class Scope
@@ -73,7 +73,7 @@ class ApplicationPolicy
     end
 
     def current_company
-      user.company if user.present?
+      user.company if normal_user?
     end
   end
 end

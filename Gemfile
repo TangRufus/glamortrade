@@ -29,10 +29,10 @@ gem 'devise', '~> 3.4.1'
 gem 'pundit', '~> 0.3.0'
 
 # # Model
-# gem 'paranoia', '~> 2.1.0'
 gem 'auto_strip_attributes', '~> 2.0.6'
-gem 'validate_url', '~> 1.0.0'
 gem 'email_validator', '~> 1.5.0'
+gem 'public_suffix', '~> 1.4.6'
+gem 'addressable', '~> 2.3.7'
 
 # # Image
 # gem 'mini_magick', '~> 4.1.0'
@@ -46,13 +46,16 @@ gem 'bh', '~> 1.3.1'
 
 # Form Builder
 gem 'simple_form', '~> 3.1.0'
-gem 'actionform', :git => 'https://github.com/rails/actionform.git', :require => 'action_form'
+gem 'actionform', git: 'https://github.com/rails/actionform.git', require: 'action_form'
 
 group :development, :test do
+  gem 'quiet_assets', '~> 1.1.0'
   gem 'annotate', '~> 2.6.5'
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'did_you_mean', '~> 0.9.6'
-  gem 'foreman', '~> 0.77.0'
+  gem 'foreman', '~> 0.78.0'
+  gem 'brakeman', '~> 3.0.2', require: false
+  gem 'dawnscanner', '~> 1.3.1', require: false
 end
 
