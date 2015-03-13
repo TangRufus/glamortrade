@@ -23,14 +23,14 @@
       <li><%= link_to current_company.name, edit_company_path(current_company) %></li>
     </li>
     <li class="hidden-xs animation-fadeInQuick">
-      <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+      <li><%= link_to current_user.email, edit_user_registration_path %></li>
     </li>
     <li class="hidden-xs animation-fadeInQuick">
       <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
     </li>
     <% elsif admin_signed_in? %>
     <li class="hidden-xs animation-fadeInQuick">
-      <li><%= link_to 'Edit account', edit_admin_registration_path %></li>
+      <li><%= link_to current_admin.email, edit_admin_registration_path %></li>
     </li>
     <li class="hidden-xs animation-fadeInQuick">
       <li><%= link_to 'Sign out', destroy_admin_session_path, :method=>'delete' %></li>
