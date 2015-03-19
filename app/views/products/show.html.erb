@@ -84,4 +84,43 @@
       </div>
     </div>
   </div>
+
+    <div class="col-md-4">
+    <!-- Partial Responsive Block -->
+    <div class="block">
+      <!-- Partial Responsive Title -->
+      <div class="block-title">
+        <div class="block-options pull-right">
+        </div>
+        <h2>Sales Summary</h2>
+      </div>
+      <!-- END Partial Responsive Title -->
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-vcenter">
+          <tbody>
+            <tr>
+              <td>Period</td>
+              <td>Unit Sold</td>
+              <td>Sales</td>
+            </tr>
+            <tr>
+              <td><strong>All Time</strong></td>
+              <td><%= @product.all_time_sale_unit %></td>
+              <td><%= number_to_currency @product.all_time_sale_income %></td>
+            </tr>
+            <tr>
+              <td><strong>Last 30 Days</strong></td>
+              <td><%= @product.last_30_days_sale_unit %></td>
+              <td><%= number_to_currency @product.last_30_days_sale_income %></td>
+            </tr>
+            <tr>
+              <td><strong>Last 7 Days</strong></td>
+              <td><%= @product.last_7_days_sale_unit %></td>
+              <td><%= number_to_currency @product.last_7_days_sale_income %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

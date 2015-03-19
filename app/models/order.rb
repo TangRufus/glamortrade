@@ -32,7 +32,6 @@ class Order < ActiveRecord::Base
   delegate :product, to: :variant
   delegate :company, to: :product
 
-
   def self.total_amount company
     orders = company.orders
     orders.sum("amount")

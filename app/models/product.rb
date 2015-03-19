@@ -28,6 +28,38 @@ class Product < ActiveRecord::Base
 
   belongs_to :company
   has_many :variants
+  has_many :orders, through: :variants
 
-  # delegate :orders, to: :variant
+  def all_time_sale_unit
+    orders.sum("unit")
+  end
+
+  def all_time_sale_income
+    orders.sum("amount")
+  end
+
+  def last_30_days_sale_unit
+    os = orders.select { |o| o.created_at > (Time.now-30.days) }
+    os.sum(&:unit)
+  end
+
+  def last_30_days_sale_income
+    os = orders.select { |o| o.created_at > (Time.now-30.days) }
+    os.sum(&:amount)
+  end
+
+  def last_7_days_sale_unit
+    os = orders.select { |o| o.created_at > (Time.now-7.days) }
+    os.sum(&:unit)
+  end
+
+  def last_7_days_sale_income
+    os = orders.select { |o| o.created_at > (Time.now-7.days) }
+    os.sum(&:amount)
+  end
+
+  private
+  def sale_unit
+    self.order.where()
+  end
 end
